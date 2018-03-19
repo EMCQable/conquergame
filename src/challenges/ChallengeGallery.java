@@ -6,23 +6,25 @@
 package challenges;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author emcq
  */
 public class ChallengeGallery{
-    ArrayList<SimpleChallenge> challenges;
+    ArrayList<Challenge> challenges;
 
     public ChallengeGallery() {
         this.challenges = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            SimpleChallenge woop = new SimpleChallenge("Say yes", "POWER OVERWHELMING");
-            challenges.add(woop);
+            challenges.add(new SimpleChallenge("Say yes", "POWER OVERWHELMING"));
         }
     }
     
-    public SimpleChallenge pick(){
-        return challenges.get(0);
+    public Challenge pick(){
+        Random random = new Random();
+        int challenge = random.nextInt(9);
+        return challenges.get(challenge);
     }
 }

@@ -5,41 +5,18 @@
  */
 package challenges;
 
-import conquergame.Player;
+import java.util.Scanner;
+import players.ChallengeCompleter;
 
 /**
  *
  * @author emcq
  */
-public class Challenge {
-    private String name;
-    private String description;
-    private int bonusPower;
-    private int requiredPower;
-    private boolean completed;
-
-    public Challenge(String name, String description, int bonusPower, int requiredPower, boolean completed) {
-        this.name = name;
-        this.description = description;
-        this.bonusPower = bonusPower;
-        this.requiredPower = requiredPower;
-        this.completed = completed;
-    }
-
-    public Challenge(String name, String description) {
-        this(name, description, 10, 0, false);
-    }
+public interface Challenge {
     
-    
-    
-    public void complete(Player player){
-        completed = true;
-        for (int i = 0; i < bonusPower; i++) {
-            player.increasePower();
-        }
-        System.out.println("You power level has increased!\n"
-                + "It is now " + player.getPower() + "!");
-        
-    }
+    public void doChallenge(Scanner reader, ChallengeCompleter player);
+    public void complete(ChallengeCompleter player);
+    public void addToJournal(ChallengeCompleter player);
+    public void checkIfAbleToStart(ChallengeCompleter player);
     
 }

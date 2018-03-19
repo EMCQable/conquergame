@@ -7,6 +7,8 @@ package conquergame;
 
 import challenges.*;
 import java.util.Scanner;
+import players.MainPlayer;
+import players.Diplomat;
 
 /**
  *
@@ -20,16 +22,20 @@ public class ConquerGame {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner reader = new Scanner(System.in);
-        Player mainChar = new Player();
+        MainPlayer mainChar = new MainPlayer();
         ChallengeGallery challenges = new ChallengeGallery();
-        
-        while (mainChar.getPower() < 100){
-            SimpleChallenge challenge = challenges.pick();
+
+        System.out.println("Welcome to Conquer!\n"
+                + "In this game your objective is to increase your power level.\n"
+                + "When your power reaches 100, you win!");
+
+        while (mainChar.getPower() < 100) {
+            Challenge challenge = challenges.pick();
             challenge.doChallenge(reader, mainChar);
         }
-        
+
         System.out.println("You win!");
-        
+
     }
-    
+
 }
